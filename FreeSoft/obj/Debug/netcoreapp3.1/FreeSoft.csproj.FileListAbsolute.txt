@@ -144,14 +144,9 @@ C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\bin\Debug\netcoreapp3.1\ru\M
 C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\Razor\Views\MoreAboutSoft\Index.cshtml.g.cs
 C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\bin\Debug\netcoreapp3.1\ICSharpCode.SharpZipLib.dll
 C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\FreeSoft.csproj.CoreCompileInputs.cache
 C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\FreeSoft.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\Razor\Views\Account\LoginRegistration.cshtml.g.cs
-C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
-C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\Razor\Views\Account\RegisterView.cshtml.g.cs
-C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccountView.cshtml.g.cs
 C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\Razor\Views\Home\SearchByName.cshtml.g.cs
 C:\Users\C#Developer\Desktop\FreeSoft\FreeSoft\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\C#Developer\Desktop\FreeSoft\FreeSoft\bin\Debug\netcoreapp3.1\appsettings.json
@@ -308,5 +303,3 @@ C:\Users\C#Developer\Desktop\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\staticweb
 C:\Users\C#Developer\Desktop\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\FreeSoft.dll
 C:\Users\C#Developer\Desktop\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\FreeSoft.pdb
 C:\Users\C#Developer\Desktop\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\FreeSoft.genruntimeconfig.cache
-C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditView.cshtml.g.cs
-C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\Razor\Views\Admin\AccountView.cshtml.g.cs

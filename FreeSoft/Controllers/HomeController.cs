@@ -25,7 +25,7 @@ namespace FreeSoft.Controllers
                 IEnumerable<Soft> list = new List<Soft>();
                 if (message==null)
                 {
-                 list = context.Query<Soft>("select * from Soft").Take(20).OrderByDescending(p=>p.ID);
+                 list = context.Query<Soft>("select * from Soft").OrderByDescending(p=>p.ID);
                 }
                 else
                 {
@@ -42,21 +42,6 @@ namespace FreeSoft.Controllers
                 {
                     ViewBag.Role = JsonConvert.DeserializeObject<Account>(Request.Cookies["Account"]).Role;
                 }
-                return View(list.ToList());
-            }
-        }
-        public IActionResult SearchByName(string Search)
-        {
-            using (var context=new SqlConnection(DB.constring))
-            {
-                var list = context.Query<Soft>("select * from Soft").Where(p=>Leveinshtein.GetLevenshteinDistance(p.Name.ToLower(),Search.ToLower())<=3).Take(20);
-                list.OrderBy(p=>Leveinshtein.GetLevenshteinDistance(p.Name,Search));
-                List<Cattegory> Cats = new List<Cattegory>();
-                foreach (var item in list)
-                {
-                    Cats.Add(context.Query<Cattegory>($"select * from Cattegories where ID={item.Cattegory}").FirstOrDefault());
-                }
-                ViewBag.Cats = Cats.ToList();
                 return View(list.ToList());
             }
         }
