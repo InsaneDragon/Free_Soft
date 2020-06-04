@@ -27,6 +27,13 @@
             <a class="navbar-brand NavMain" asp-area="" asp-controller="Home" asp-action="Index">FreeSoft</a>
             <div id="AddSoftDiv">
             </div>
+            <form asp-action="SearchByName" asp-controller="Home" class="Search">
+                <input class="SearchInput" id="Search" name="Search" placeholder="Найти по запросу" />
+                <input type="submit" value="Поиск" class="btn btn-primary SearchBtn" />
+            </form>
+            <a class="navbar-account" href="/Account/LoginRegistration">
+                <img style="width:70px" src="/Icons/account.png" />
+            </a>
         </nav>
     </header>
     <div class="sidenav shadow">
