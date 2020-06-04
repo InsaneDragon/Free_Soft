@@ -1,0 +1,56 @@
+﻿@model List<Account>
+<body>
+    <script>
+        function DeleteAccount(id) {
+            $.post("/Admin/DeleteAccount", { id: id })
+                .done(function () {
+                    $(`#${id}`).remove();
+                })
+        }
+        function MakeAdmin(id) {
+            $.post("/Admin/MakeAdmin", { id: id })
+                .done(function () {
+                    $(`#Role${id}`).html("Admin");
+                    $(`#Btn${id}`).remove();
+                })
+        }
+    </script>
+    <div class="Accounts">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Login</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    string Role = "Role" + item.ID;
+                    string Btn = "Btn" + item.ID;
+                    <tr id="@item.ID">
+                        <td>@item.ID</td>
+                        <td>@item.Login</td>
+                        <td>@item.Email</td>
+                        @if (item.Role == 1)
+                        {
+                            <td>Admin</td>
+                        }
+                        else
+                        {
+                            <td id="@Role">User</td>
+                        }
+                        @if (item.Role==2)
+                        {
+                        <td id="@Btn"><button onclick="MakeAdmin(@item.ID)" class="btn btn-warning">Сделать Администратором</button></td>
+                        }
+                        <td><button onclick="DeleteAccount(@item.ID)" class="btn btn-danger">Удалить</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
