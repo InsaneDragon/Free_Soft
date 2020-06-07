@@ -1,0 +1,58 @@
+﻿@using System.Diagnostics;
+@using System.Linq;
+@using System.Threading.Tasks;
+@using Microsoft.AspNetCore.Mvc;
+@using Microsoft.Extensions.Logging;
+@using FreeSoft.Models;
+@using Dapper;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
+@using System.Data.Common;
+@using Microsoft.Data.SqlClient;
+@{
+    List<Cattegory> Cats = new List<Cattegory>();
+    using (var context = new SqlConnection(DB.constring))
+    {
+        Cats = context.Query<Cattegory>("select * from Cattegories").ToList();
+    }
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FreeSoft</title>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav style="margin-bottom:0" class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand NavMain" asp-area="" asp-controller="Home" asp-action="Index">FreeSoft</a>
+            </div>
+        </nav>
+    </header>
+    <div class="sidenav shadow">
+        <label class="CatsLabel instagram-gradient">Категории</label>
+        <div class="CatsLine"></div>
+        @foreach (var item in Cats)
+        {
+            string CatPic = "\\Icons\\" + item.PictureUrl;
+            <div class="Cat">
+                <img style="float:left" src="@CatPic" />
+                <label>  <a href="/Home/Index?message=@item.ID">@item.Name </a></label>
+            </div>
+        }
+        <div></div>
+    </div>
+    <div style="margin-left:20px">
+        @RenderBody()
+    </div>
+    <footer class="border-top footer text-muted">
+    </footer>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
