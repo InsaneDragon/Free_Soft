@@ -5,13 +5,12 @@ using System.Threading.Tasks;
 
 namespace FreeSoft.Models
 {
-    public class Comment
+    public class Account
     {
-        public string Text { get; set; }
         public int ID { get; set; }
-        public string Date { get; set; }
-        public string SoftID { get; set; }
-        public int AccountID { get; set; }
         public string Login { get; set; }
+        public string Password { get; set; }
+        public int Role { get; set; }
+        public string Email { get; set; }
     }
 }

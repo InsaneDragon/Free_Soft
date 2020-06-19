@@ -1,0 +1,26 @@
+﻿<head></head>
+<body>
+    <script>
+        function Register()
+        {
+            let Login = $('#Login').val();
+            let Password = $('#Password').val();
+            let Email = $('#Email').val();
+            $.post("/Account/Register", { Login: Login, Password: Password, Email: Email })
+                .done(function () {
+                    window.location.href = "/Home/Index";
+                })
+        }
+    </script>
+    <div class="LoginForm">
+        <div>
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Email" id="Email"/>
+            <label>Login</label>
+            <input class="form-control" placeholder="Login" id="Login" />
+            <label>Password </label>
+            <input type="password" class="form-control" placeholder="Password" id="Password" />
+            <button onclick="Register()" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
+    </div>
+</body>

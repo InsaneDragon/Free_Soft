@@ -17,16 +17,22 @@
             let text = $('#CommentText').val();
             debugger;
             if (text) {
-            $.post("/MoreAboutSoft/Comment", { Text: text, id:"@Model.SoftIdentity"})
-                .done(function () {
-                    let date = @DateTime.Now.Day.ToString() + "/" + @DateTime.Now.Month.ToString() + "/" + @DateTime.Now.Year.ToString();
-                    $('#CommentList').append(`<div style="margin-top: 20px; margin-left: 20px;">
+                $.post("/MoreAboutSoft/Comment", { Text: text, id: "@Model.SoftIdentity" })
+                    .done(function (data) {
+                        if (data == "Error") {
+                            window.location.href = "/Account/LoginRegistration";
+                        }
+                        else {
+                            let date = @DateTime.Now.Day.ToString() + "/" + @DateTime.Now.Month.ToString() + "/" + @DateTime.Now.Year.ToString();
+                            $('#CommentList').append(`<div style="margin-top: 20px; margin-left: 20px;">
+ <label class="CommentLogin">${data.login}</label>
                     <img style="float:left;border:1px solid gray;border-radius:50%;margin-right:15px" src="/Icons/security.png" />
-                    <label style="font-weight:500;font-size:13px">${text}</label>  
+                    <label style="font-weight:500;font-size:13px">${text}</label>
                     <label style="width:100%;margin-left:35px;font-size:14px">${date}</label>
                 </div><hr/>`);
-                    $('#CommentText').val('');
-                })
+                            $('#CommentText').val('');
+                        }
+                        })
             }
             else {
                 $('#snackbar').html("Комментарий не может быть пустым");
@@ -35,14 +41,14 @@
             }
         }
     </script>
-    <div style="width:77%">
+    <div class="MoreAbout">
         <img style="width:100%" src="@SoftPic" />
         <div class="UnderPicture">
             <a class="btn btn-light" href="#desc">Описание</a>
             <a class="btn btn-light" href="#Comments">Комментарии</a>
             @if (Model.YoutubeLink != null)
             {
-                <a class="btn"style="background-color:#ff0000;color:white" href="@Model.YoutubeLink">YouTube</a>
+                <a class="btn" style="background-color:#ff0000;color:white" href="@Model.YoutubeLink">YouTube</a>
             }
             <a class="btn btn-success" href="/MoreAboutSoft/DownloadFile?FileName=@Model.FileName">Скачать</a>
         </div>
@@ -50,12 +56,13 @@
         <label style="font-size:17px;font-weight:bold">@Model.Description</label>
         <div id="Comments" class="Comments">
             <div style="height:35px;" class="bg-primary"></div>
-            <input  id="CommentText" placeholder="Ваш Комментарий..." />
+            <input id="CommentText" placeholder="Ваш Комментарий..." />
             <button style="float:right" onclick="Comment()" class="btn btn-primary">Отправить</button>
             <div id="CommentList">
                 @foreach (var item in ViewBag.Comments as List<Comment>)
                 {
                     <div style="margin-top:20px;margin-left:20px;">
+                        <label class="CommentLogin">@item.Login</label>
                         <img style="float:left;border:1px solid gray;border-radius:50%;margin-right:15px" src="/Icons/security.png" />
                         <label style="font-weight:500;font-size:13px">@item.Text</label>
                         <label style="width:100%;margin-left:35px;font-size:14px;">@item.Date</label>

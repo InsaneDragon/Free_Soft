@@ -5,6 +5,11 @@
 <head>
 </head>
 <body>
+    <script>
+            if ("@ViewBag.Role" == "Admin") {
+                $('#AddSoftDiv').append(`<a class="btn btn-success AddBtn" href="/Admin/Index">Add Soft</a>`);
+            }
+    </script>
     <div id="SoftList"style="">
         @for (int i=0;i<Model.Count;i++)
         {
@@ -12,13 +17,17 @@
             string SoftPic = "\\Images\\" + Model[i].PictureLink;
         <div class="Soft shadow" style="" id="@Model[i].ID">
             <img class="SoftImg" src="@SoftPic" />
-            <div style="float:right;width:48%">
-                <div style="display:inline-block"><a href="/MoreAboutSoft/Index?id=@Model[i].SoftIdentity"class="SoftName">@Model[i].Name</a></div>
+            <div class="SoftMore">
+                <div style="display:inline-block"><a href="/MoreAboutSoft/Index?id=@Model[i].SoftIdentity" class="SoftName">@Model[i].Name</a></div>
                 <div style="margin-top:10px">
-                    <img style="width:50px" src="@CatPic"/><label class="CatName instagram-gradient">@ViewBag.Cats[i].Name</label>
+                    <img style="width:50px" src="@CatPic" /><label class="CatName instagram-gradient">@ViewBag.Cats[i].Name</label>
                     <label style="font-size:16px" class="CatName">@Model[i].Date</label>
                 </div>
-                <label style="margin-top: 30px;font-size:17px;font-weight:bold">@Model[i].Description</label>
+                <label class="description">@Model[i].Description</label>
+                <div style="float:right;margin-right:10px;margin-bottom:10px">
+                <a class="btn btn-dark SoftLinks align-bottom"style="margin:0" href="/MoreAboutSoft/Index?id=@Model[i].SoftIdentity">Перейти</a>
+                <a class="btn btn-dark SoftLinks align-bottom"style="margin:0" href="/MoreAboutSoft/DownloadFile?FileName=@Model[i].FileName">Скачать</a>
+                </div>
             </div>
         </div>
         }

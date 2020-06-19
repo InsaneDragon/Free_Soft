@@ -1,0 +1,30 @@
+﻿@model List<Soft>
+@{
+    ViewData["Title"] = "FreeSoft";
+}
+<head>
+</head>
+<body>
+    <div id="SoftList" style="">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            string CatPic = "\\Icons\\" + ViewBag.Cats[i].PictureUrl;
+            string SoftPic = "\\Images\\" + Model[i].PictureLink;
+            <div class="Soft shadow" style="" id="@Model[i].ID">
+                <img class="SoftImg" src="@SoftPic" />
+                <div class="SoftMore">
+                    <div style="display:inline-block"><a href="/MoreAboutSoft/Index?id=@Model[i].SoftIdentity" class="SoftName">@Model[i].Name</a></div>
+                    <div style="margin-top:10px">
+                        <img style="width:50px" src="@CatPic" /><label class="CatName instagram-gradient">@ViewBag.Cats[i].Name</label>
+                        <label style="font-size:16px" class="CatName">@Model[i].Date</label>
+                    </div>
+                    <label class="description">@Model[i].Description</label>
+                    <div style="float:right;margin-right:10px;margin-bottom:10px">
+                        <a class="btn btn-dark SoftLinks align-bottom" style="margin:0" href="/MoreAboutSoft/Index?id=@Model[i].SoftIdentity">Перейти</a>
+                        <a class="btn btn-dark SoftLinks align-bottom" style="margin:0" href="/MoreAboutSoft/DownloadFile?FileName=@Model[i].FileName">Скачать</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</body>

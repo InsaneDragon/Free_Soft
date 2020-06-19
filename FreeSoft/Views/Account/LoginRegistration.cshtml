@@ -1,0 +1,26 @@
+﻿<head></head>
+<body>
+    <script>
+        function EnterAccount() {
+            let login = $('#Login').val();
+            let pass = $('#Password').val();
+            $.post("/Account/Login", { Login: login, Password: pass })
+                .done(function (data) {
+                    alert(data);
+                })
+        }
+    </script>
+<div class="LoginForm">
+    <div>
+        <label>Login</label>    
+        <input id="Login" class="form-control" placeholder="Login" />
+        <label>Password</label>
+        <input id="Password" class="form-control" type="password" placeholder="Password" />
+        <button id="AccountEnterBtn"onclick="EnterAccount()" class="btn btn-success">Войти в Аккаунт</button>
+    </div>
+</div> 
+<div class="RegisterLink">
+    <label class="min-font">Нет Аккаунта?</label>
+    <a href="/Account/RegisterView" class="min-font">Регистрация</a>
+</div>
+</body>

@@ -1,0 +1,13 @@
+﻿@model Account
+<body>
+    <h3 class="center">Личная Информация</h3>
+    <div class="LoginForm">
+        <div>
+            <label>Email</label>
+            <h5>@Model.Email</h5>
+            <label>Login</label>
+            <h5>@Model.Login</h5>
+            <a asp-action="QuitFromAccount"asp-controller="Account" style="color:white" class="btn btn-dark quitbtn">Выйти из Аккаунта</a>
+        </div>
+    </div>
+</body>

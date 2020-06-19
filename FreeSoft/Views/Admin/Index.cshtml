@@ -1,0 +1,19 @@
+﻿<div class="LoginForm">
+    <div class="SoftAdd">
+        <form asp-action="AddSoft"asp-controller="Admin" enctype="multipart/form-data">
+            <label>Название</label>
+            <input class="form-control" id="SoftName" name="SoftName"  placeholder="Название" required />
+            <label>Категория</label>
+            @Html.DropDownList("Cattegories", null, null, new { @class = "form-control" })
+            <label>Фото</label>
+            <input class="form-control" id="Picture" type="file"name="Picture" required />
+            <label>Софт</label>
+            <input class="form-control" id="SoftFile"name="SoftFile" type="file" required />
+            <label>YouTube Ссылка</label>
+            <input id="YoutubeLink"name="YoutubeLink" class="form-control" placeholder="YouTube" />
+            <label>Описание</label>
+            <input id="Description"name="Description" class="form-control" placeholder="Описание" />
+            <input type="submit" style="margin-bottom:0;" value="Добавить" class="btn btn-success" />
+        </form>
+    </div>
+</div>

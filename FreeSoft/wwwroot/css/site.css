@@ -62,7 +62,7 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 }
 
 .footer {
@@ -74,7 +74,7 @@ body {
 }
 
 .Soft {
-    width: 77%;
+    width: 75%;
     height: auto;
     overflow: auto;
     border: 1px solid gray;
@@ -120,6 +120,8 @@ body {
 }
 
 .NavMain {
+    margin-left: 20px;
+    margin-right: 30px;
     font-size: 24px;
     font-weight: bold;
     background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
@@ -136,8 +138,10 @@ body {
 
     .UnderPicture a {
         margin-top: 6px;
-        margin-left: 20px;
+        margin-left: 15px;
+        margin-bottom: 8px;
         font-weight: bold;
+        width: 140px;
     }
 
 .Comments {
@@ -177,10 +181,10 @@ body {
 .sidenav {
     border-left: 1px solid gray;
     height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 281px; /* Set the width of the sidebar */
+    width: 400px; /* Set the width of the sidebar */
     top: 0px;
     position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    left: 80%;
+    left: 78%;
     overflow-x: hidden; /* Disable horizontal scroll */
 }
 
@@ -192,6 +196,7 @@ body {
 }
 
 .CatsLine {
+    margin-top: 5px;
     background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
     height: 6px;
 }
@@ -200,9 +205,11 @@ body {
     width: 100%;
     height: 75px;
 }
+
     .Cat:hover {
         background-color: #e6e6e6;
     }
+
     .Cat img {
         width: 50px;
         margin-top: 13px;
@@ -220,3 +227,191 @@ body {
     .Cat a {
         text-decoration: none;
     }
+
+.SoftLinks {
+    background-color: #f5f5f5;
+    border: none;
+    color: black;
+    font-weight: 500;
+}
+
+.navbar-account {
+    margin-left: auto;
+    float: right;
+    margin-right: 23%;
+}
+
+.LoginForm {
+    width: 55%;
+    margin-left: 11%;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+    .LoginForm div {
+        margin: 15px;
+    }
+
+    .LoginForm button {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+.min-font {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.RegisterLink {
+    margin-right: 35%;
+    float: right;
+    margin-left: auto;
+}
+
+.SoftAdd input {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.SoftAdd button {
+    width: 100%;
+}
+
+.AddBtn {
+    font-size: 18px;
+    font-weight: 500;
+    width: 150px;
+}
+
+.quitbtn {
+    width: 100%;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+    .quitbtn:hover {
+        cursor: pointer;
+    }
+
+.center {
+    margin-left: 28%;
+}
+
+.CommentLogin {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.MoreAbout {
+    width: 77%;
+}
+
+@media(max-width:1000px) {
+    .sidenav {
+        visibility: hidden;
+    }
+
+    .Soft {
+        width: 100%;
+    }
+
+    .navbar-account {
+        margin-right: 0;
+    }
+
+    .MoreAbout {
+        width: 100%;
+    }
+
+    .LoginForm {
+        width: 70%;
+        margin-left: 15%;
+    }
+
+    .RegisterLink {
+        margin-right: 16%;
+    }
+}
+
+@media(max-width:500px) {
+    .LoginForm {
+        margin-left: 0;
+        width: 96%;
+    }
+
+    .RegisterLink {
+        margin-right: 6%;
+    }
+    .Search {
+    display:none;
+    }
+}
+
+.description {
+    margin-top: 30px;
+    font-size: 17px;
+    font-weight: bold;
+    width: 95%
+}
+
+.SoftMore {
+    float: right;
+    width: 48%
+}
+
+@media(max-width:700px) {
+    .description {
+        display: none;
+    }
+    .SearchInput {
+        max-width: 70%;
+    }
+}
+
+@media(max-width:625px) {
+    .UnderPicture {
+        height: 97px;
+    }
+
+    .SearchInput {
+        max-width: 135px;
+    }
+}
+
+.Pages {
+    margin-left: 10px;
+}
+
+.Search {
+    width: 50%;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.SearchInput {
+    border: none;
+    height: 35px;
+    width: 75%;
+    min-width:99px;
+    outline:none;
+}
+
+.Search button {
+}
+
+.SearchBtn {
+    height:40px;
+    float: right;
+    width: 80px;
+}
+@media(max-width:550px) {
+    .SoftImg {
+    width:100%;
+    }
+    .SoftMore {
+    width:100%;
+    text-align:center;
+    }
+}

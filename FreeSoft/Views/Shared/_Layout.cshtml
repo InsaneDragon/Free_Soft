@@ -1,14 +1,9 @@
-﻿@using System.Diagnostics;
+﻿@using System.Collections.Generic;
 @using System.Linq;
-@using System.Threading.Tasks;
-@using Microsoft.AspNetCore.Mvc;
-@using Microsoft.Extensions.Logging;
-@using FreeSoft.Models;
 @using Dapper;
-@using Microsoft.EntityFrameworkCore;
-@using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
-@using System.Data.Common;
+@using FreeSoft.Models;
 @using Microsoft.Data.SqlClient;
+
 @{
     List<Cattegory> Cats = new List<Cattegory>();
     using (var context = new SqlConnection(DB.constring))
@@ -29,9 +24,16 @@
 <body>
     <header>
         <nav style="margin-bottom:0" class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
-            <div class="container">
                 <a class="navbar-brand NavMain" asp-area="" asp-controller="Home" asp-action="Index">FreeSoft</a>
+            <div id="AddSoftDiv">
             </div>
+            <form asp-action="SearchByName"asp-controller="Home" class="Search">
+                <input class="SearchInput"id="Search"name="Search" placeholder="Найти по запросу"/>
+                <input type="submit" value="Поиск"class="btn btn-primary SearchBtn"/>
+            </form>
+                <a class="navbar-account" href="/Account/LoginRegistration">
+                    <img style="width:70px" src="/Icons/account.png" />
+                </a>
         </nav>
     </header>
     <div class="sidenav shadow">
@@ -42,12 +44,12 @@
             string CatPic = "\\Icons\\" + item.PictureUrl;
             <div class="Cat">
                 <img style="float:left" src="@CatPic" />
-                <label>  <a href="/Home/Index?message=@item.ID">@item.Name </a></label>
+                <label><a href="/Home/Index?message=@item.ID">@item.Name </a></label>
             </div>
         }
         <div></div>
     </div>
-    <div style="margin-left:20px">
+    <div class="Pages">
         @RenderBody()
     </div>
     <footer class="border-top footer text-muted">
