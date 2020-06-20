@@ -1,0 +1,39 @@
+﻿@model Soft
+<body>
+    <script>
+        $(document).ready(function () {
+            let x =@Model.Cattegory;
+            if (x>=6) {
+                x -= 2;
+            }
+            $("#Cattegories").prop('selectedIndex', x-1);
+        })
+    </script>
+    <div class="LoginForm">
+        <div class="SoftAdd">
+            <form asp-action="Edit" asp-controller="Admin" enctype="multipart/form-data">
+                <input name="FileID" id="FileID" value="@Model.ID" style="display:none" />
+                <label>Название</label>
+                <input class="form-control" id="SoftName" name="SoftName" placeholder="Название" value="@Model.Name" required />
+                <label>Категория</label>
+                @Html.DropDownList("Cattegories", null, null, new { @class = "form-control" })
+                <label>Фото</label>
+                <input class="form-control" id="Picture" type="file" name="Picture" />
+                <label>Софт</label>
+                <input class="form-control" id="SoftFile" name="SoftFile" type="file" />
+                <label>YouTube Ссылка</label>
+                @if (Model.YoutubeLink == null)
+                {
+                    <input id="YoutubeLink" name="YoutubeLink" class="form-control" placeholder="YouTube" />
+                }
+                else
+                {
+                    <input id="YoutubeLink" name="YoutubeLink" class="form-control" value="@Model.YoutubeLink" placeholder="YouTube" />
+                }
+                <label>Описание</label>
+                <input id="Description" name="Description" class="form-control" value="@Model.Description" placeholder="Описание" />
+                <input type="submit" style="margin-bottom:0;" value="Изменить" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+</body>

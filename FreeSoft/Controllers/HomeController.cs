@@ -25,7 +25,7 @@ namespace FreeSoft.Controllers
                 IEnumerable<Soft> list = new List<Soft>();
                 if (message==null)
                 {
-                 list = context.Query<Soft>("select * from Soft").Take(20);
+                 list = context.Query<Soft>("select * from Soft").Take(20).OrderByDescending(p=>p.ID);
                 }
                 else
                 {
@@ -37,22 +37,10 @@ namespace FreeSoft.Controllers
                 Cats.Add(context.Query<Cattegory>($"select * from Cattegories where ID={item.Cattegory}").FirstOrDefault());
                 }
                 ViewBag.Cats = Cats.ToList();
-                var Account = Request.Cookies["Account"];
-                if (Account!=null)
+                ViewBag.Role = 2;
+                if (Request.Cookies["Account"]!=null)
                 {
-                    var role = JsonConvert.DeserializeObject<Account>(Request.Cookies["Account"]).Role;
-                    if (role==1)
-                    {
-                        ViewBag.Role = "Admin";
-                    }
-                    else
-                    {
-                        ViewBag.Role = "Client";
-                    }
-                }
-                else
-                {
-                    ViewBag.Role = "Visitor";
+                    ViewBag.Role = JsonConvert.DeserializeObject<Account>(Request.Cookies["Account"]).Role;
                 }
                 return View(list.ToList());
             }

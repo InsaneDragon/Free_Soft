@@ -308,3 +308,5 @@ C:\Users\C#Developer\Desktop\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\staticweb
 C:\Users\C#Developer\Desktop\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\FreeSoft.dll
 C:\Users\C#Developer\Desktop\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\FreeSoft.pdb
 C:\Users\C#Developer\Desktop\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\FreeSoft.genruntimeconfig.cache
+C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\Razor\Views\Admin\EditView.cshtml.g.cs
+C:\Users\C#Developer\source\repos\FreeSoft\FreeSoft\obj\Debug\netcoreapp3.1\Razor\Views\Admin\AccountView.cshtml.g.cs

@@ -36,7 +36,7 @@ namespace FreeSoft.Controllers
             await Task.Run(() =>
             {
                 using (var stream = new FileStream(path, FileMode.Create))
-                {   
+                {
                     Picture.CopyTo(stream);
                 }
                 using (var stream = new FileStream(file, FileMode.Create))
@@ -59,6 +59,76 @@ namespace FreeSoft.Controllers
                 }
             });
             return RedirectToAction("Index", "Home", null);
+        }
+        public IActionResult EditView(int id)
+        {
+            using (var context = new SqlConnection(DB.constring))
+            {
+                var Soft = context.Query<Soft>($"select * from Soft where ID={id}").FirstOrDefault();
+                ViewBag.Cattegories = new SelectList(context.Query<Cattegory>("select * from Cattegories"), "ID", "Name");
+                return View(Soft);
+            }
+        }
+
+        public IActionResult Edit(string SoftName, string Description, IFormFile Picture, IFormFile SoftFile, string YoutubeLink, string Cattegories, int FileID)
+        {
+            using (var context = new SqlConnection(DB.constring))
+            {
+                string updatecommand = "update Soft ";
+                string values = $"set Name='{SoftName}',Description='{Description}',YoutubeLink='{YoutubeLink}',Cattegory='{Cattegories}'";
+                if (Picture != null)
+                {
+                    var path = env.WebRootPath + $"\\Images\\{Picture.FileName}";
+                    using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        Picture.CopyTo(stream);
+                    }
+                    values += $",PictureLink='{Picture.FileName}'";
+                }
+                if (SoftFile != null)
+                {
+                    var file = env.WebRootPath + $"\\UploadFiles\\{SoftFile.FileName}";
+                    using (var stream = new FileStream(file, FileMode.Create))
+                    {
+                        SoftFile.CopyTo(stream);
+                    }
+                    values += $",FileName='{SoftFile.FileName}'";
+                }
+                values += $" where ID={FileID}";
+                context.Query(updatecommand + values);
+                return RedirectToAction("Index", "Home");
+            }
+        }
+        public IActionResult Delete(int id)
+        {
+            using (var context=new SqlConnection(DB.constring))
+            {
+                context.Query($"delete from Soft where ID={id}");
+            }
+            return RedirectToAction("Index", "Home");
+        }
+        public IActionResult AccountView()
+        {
+            using (var context=new SqlConnection(DB.constring))
+            {
+                var list = context.Query<Account>("select * from Acount");
+                return View(list);
+            }
+        }
+        public void DeleteAccount(int id)
+        {
+            using (var context=new SqlConnection(DB.constring))
+            {
+                context.Query($"delete from Comments where AccountID={id}");
+                context.Query($"delete from Acount where ID={id}");
+            }
+        }
+        public void MakeAdmin(int id)
+        {
+            using (var context=new SqlConnection(DB.constring))
+            {
+                var account = context.Query<Account>($"update Acount set Role=1 where ID={id}");
+            }
         }
     }
 }

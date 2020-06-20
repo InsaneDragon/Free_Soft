@@ -7,6 +7,9 @@
             $.post("/Account/Login", { Login: login, Password: pass })
                 .done(function (data) {
                     alert(data);
+                    if (data == "Вы успешно зашли в аккаунт") {
+                        window.location.href="/Home/Index"
+                    }
                 })
         }
     </script>

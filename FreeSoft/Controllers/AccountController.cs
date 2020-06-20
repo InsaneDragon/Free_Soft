@@ -16,26 +16,26 @@ namespace FreeSoft.Controllers
         public IActionResult LoginRegistration()
         {
             var acc = Request.Cookies["Account"];
-            if (acc!=null)
+            if (acc != null)
             {
                 Account account = JsonConvert.DeserializeObject<Account>(Request.Cookies["Account"]);
-                return RedirectToAction("AccountView","Account",account);
+                return RedirectToAction("AccountView", "Account", account);
             }
             return View();
         }
-        public JsonResult Login(string Login,string Password)
+        public JsonResult Login(string Login, string Password)
         {
-            using (var context=new SqlConnection(DB.constring))
+            using (var context = new SqlConnection(DB.constring))
             {
-                var account=context.Query<Account>($"select * from Acount where Login='{Login}'").FirstOrDefault();
-                if (account==null)
+                var account = context.Query<Account>($"select * from Acount where Login='{Login}'").FirstOrDefault();
+                if (account == null)
                 {
                     return Json("Неверный Логин");
                 }
-                else if (account.Password==Password)
+                else if (account.Password == Password)
                 {
                     Response.Cookies.Append("Account", JsonConvert.SerializeObject(account));
-                    return Json("Вы успешно зашли в аккаунт");  
+                    return Json("Вы успешно зашли в аккаунт");
                 }
                 else
                 {
@@ -47,14 +47,20 @@ namespace FreeSoft.Controllers
         {
             return View();
         }
-        public JsonResult Register(string Email,string Login,string Password)
+        public JsonResult Register(string Email, string Login, string Password)
         {
-            using (var context=new SqlConnection(DB.constring))
+            using (var context = new SqlConnection(DB.constring))
             {
                 try
                 {
-                context.Query($"insert into Acount(Login,Password,Email,Role)Values('{Login}','{Password}','{Email}',2)");
-                    Account account = new Account { Email=Email,Login=Login,Password=Password, Role=2 };
+                    var test = context.Query<Account>($"select * from Acount where Email='{Email}'");
+                    if (test != null)
+                    {
+                        return Json("Already Exists");
+                    }
+                    context.Query($"insert into Acount(Login,Password,Email,Role)Values('{Login}','{Password}','{Email}',2)");
+                    int id = context.Query<int>($"select ID from Acount where Email='{Email}'").FirstOrDefault();
+                    Account account = new Account { Email = Email, Login = Login, Password = Password, Role = 2, ID = id };
                     Response.Cookies.Append("Account", JsonConvert.SerializeObject(account));
                 }
                 catch (Exception ex)
@@ -71,7 +77,7 @@ namespace FreeSoft.Controllers
         public IActionResult QuitFromAccount()
         {
             Response.Cookies.Delete("Account");
-            return RedirectToAction("Index","Home",null);
+            return RedirectToAction("Index", "Home", null);
         }
     }
 }

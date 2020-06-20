@@ -332,6 +332,7 @@ body {
     .RegisterLink {
         margin-right: 16%;
     }
+    
 }
 
 @media(max-width:500px) {
@@ -413,5 +414,21 @@ body {
     .SoftMore {
     width:100%;
     text-align:center;
+    }
+}
+.AdminBtns {
+    display: inline-block;
+    margin-left: auto;
+    float: right;
+    margin-top: 5px;
+    margin-right: 5px
+}
+.Accounts {
+    width: 75%;
+    text-align:center;
+}
+@media(max-width:999px) {
+    .Accounts {
+        width: 100%;
     }
 }
