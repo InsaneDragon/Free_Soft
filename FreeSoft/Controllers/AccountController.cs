@@ -53,7 +53,7 @@ namespace FreeSoft.Controllers
             {
                 try
                 {
-                    var test = context.Query<Account>($"select * from Acount where Email='{Email}'");
+                    var test = context.Query<Account>($"select * from Acount where Email='{Email}'").FirstOrDefault();//Ошибка в регистрации была в том что я получал list и ставил условие if(null) но list не может быть null и я поставил firstOrDefault
                     if (test!=null)
                     {
                         return Json("Already Exists account with same email");
